@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="test">
+<property name ="src.java.dir" location="./src/cartShopTesting"/>
+<property name ="src.test.dir" location="./src/cartShopTesting"/>
+<property name ="result.dir" location="./target"/>
+<property name ="result.javaclasses.dir" location="${result.dir}/classes"/>
+<property name ="result.testclasses.dir" location="${result.dir}/testclasses"/>
+	
+
+
+<path id="NecessaryLibraries">
+        <pathelement location="./uesrl/junit-4.12.jar"/>
+        <!--matcher-->
+ <pathelement location="./userl/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+        <!--<pathelement location="./UsedLibraries/jacocoant.jar"/>-->
+    </path>
+    
+       <target name="compile">
+            <mkdir dir ="${result.javaclasses.dir}"/>
+            <javac srcdir="C:\Program Files\Java\jdk1.8.0_201\bin" destdir="${result.javaclasses.dir}" debug="true" includeantruntime="false">
+            </javac>
+</target>
+        
+    <target name="compile-testcases" depends="compile">
+    
+        <mkdir dir="${result.testclasses.dir}"/>
+        <javac srcdir="${src.test.dir}"  destdir="${result.testclasses.dir}" debug="true" includeantruntime="false">
+            <classpath>
+                
+                <path refid="NecessaryLibraries"/>
+                <pathelement location="${result.javaclasses.dir}"/>
+            </classpath>
+        </javac>        
+    </target>
+    
+    <target name="test" depends="compile-testcases">
+        <junit printsummary="true" haltonfailure="true" fork="true">
+            <classpath>
+                <path refid="NecessaryLibraries"></path>
+                <pathelement location="${result.javaclasses.dir}"/>
+                <pathelement location="${result.testclasses.dir}"/>
+            </classpath>
+            <formatter type="brief" usefile="false"/>
+            <batchtest >
+                <fileset dir="${result.testclasses.dir}" >
+                     <include name="**/*Test.class"/>
+                </fileset>
+            </batchtest>
+            
+        </junit>
+    </target>
+    </project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
