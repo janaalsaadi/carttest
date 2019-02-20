@@ -6,7 +6,14 @@
 <property name ="result.javaclasses.dir" location="${result.dir}/classes"/>
 <property name ="result.testclasses.dir" location="${result.dir}/testclasses"/>
 	
-
+</target>
+<!-- comment Make jar or executable product -->
+<target name ="jar" depends ="compile">
+          <jar destfile="${result.jar.file}">
+                   <fileset dir ="${result.javaclasses.dir}">
+           </fileset>
+              </jar>
+        </target>
 
 <path id="NecessaryLibraries">
         <pathelement location="./uesrl/junit-4.12.jar"/>
