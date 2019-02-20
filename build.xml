@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="test">
 <property name ="src.java.dir" location="./src/cartShopTesting"/>
-<property name ="src.test.dir" location="./src/cartShopTesting"/>
+<property name ="src.test.dir" location="./src/Test/"/>
 <property name ="result.dir" location="./target"/>
 <property name ="result.javaclasses.dir" location="${result.dir}/classes"/>
 <property name ="result.testclasses.dir" location="${result.dir}/testclasses"/>
@@ -43,7 +43,7 @@
             <formatter type="brief" usefile="false"/>
             <batchtest >
                 <fileset dir="${result.testclasses.dir}" >
-                     <include name="**/*Test.class"/>
+                     <include name="**/*test.class"/>
                 </fileset>
             </batchtest>
             
